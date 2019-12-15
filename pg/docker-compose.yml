@@ -1,0 +1,16 @@
+version: '2.2'
+services:
+    pg:
+        image: 'postgres:alpine'
+        container_name: postgres
+        ports:
+            - '5432:5432'
+        environment:
+            - POSTGRES_DB=rollout
+            - POSTGRES_USER=rollout-user
+            - POSTGRES_PASSWORD=rollout-password
+        networks:
+            - postgres
+networks:
+    postgres:
+        driver: bridge
