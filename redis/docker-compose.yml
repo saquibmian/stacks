@@ -1,0 +1,12 @@
+version: '2.2'
+services:
+    redis:
+        image: 'redis:5.0.7-alpine'
+        container_name: redis
+        ports:
+            - '6379:6379'
+        networks:
+            - redis
+networks:
+    redis:
+        driver: bridge
