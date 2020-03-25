@@ -11,6 +11,18 @@ services:
             - POSTGRES_PASSWORD=rollout-password
         networks:
             - postgres
+        restart: unless-stopped
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: pgadmin
+        ports:
+            - '5050:80'
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=example@example.com
+            - PGADMIN_DEFAULT_PASSWORD=admin
+        networks:
+            - postgres
+        restart: unless-stopped
 networks:
     postgres:
         driver: bridge
