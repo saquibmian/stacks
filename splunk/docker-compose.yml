@@ -1,0 +1,17 @@
+version: '2.2'
+services:
+    splunk:
+        image: 'splunk/splunk'
+        container_name: splunk
+        ports:
+            - '8000:8000'
+            - '8089:8089'
+        environment:
+            - SPLUNK_START_ARGS=--accept-license
+            - SPLUNK_PASSWORD=adminAdmin
+        networks:
+            - splunk
+        restart: unless-stopped
+networks:
+    splunk:
+        driver: bridge
